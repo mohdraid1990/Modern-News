@@ -256,7 +256,10 @@ footer {
     flex-direction: column;
     align-items: center;
   }
-
+  
+  header {
+    justify-content: space-between;
+  }
   .news-image {
     width: 100%;
   }
