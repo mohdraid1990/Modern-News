@@ -1,0 +1,279 @@
+/* Define CSS variables in root */
+:root {
+  --font-main: "Helvetica Neue", Arial, sans-serif;
+  --color-bg: #f4f4f9;
+  --color-text: #333;
+  --color-header-bg: #1a1a2e;
+  --color-highlight: #e94560;
+  --color-footer-bg: #1a1a2e;
+  --color-footer-text: #fff;
+  --color-form-bg: #f7f7f9;
+  --color-form-border: #ddd;
+  --color-button-hover: #d8345f;
+  --font-size-base: 16px;
+  --font-size-small: 14px;
+  --font-size-large: 20px;
+  --font-size-xl: 24px;
+  --font-size-xxl: 32px;
+  --padding-small: 10px;
+  --padding-large: 20px;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --transition-speed: 0.3s;
+}
+
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-main);
+}
+
+/* Body styling */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  animation: fadeIn 1s ease-out;
+}
+
+/* Page fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Header styling */
+header {
+  background-color: var(--color-header-bg);
+  color: var(--color-footer-text);
+  padding: var(--padding-large);
+  text-align: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.logo {
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  color: var(--color-highlight);
+}
+
+/* Toggle button styling */
+.menu-toggle {
+  display: none;
+  font-size: var(--font-size-xl);
+  position: absolute;
+    top: 10px;
+    right: 7px;
+  color: var(--color-footer-text);
+  cursor: pointer;
+}
+
+/* Hide the checkbox */
+#menu-checkbox {
+  display: none;
+}
+
+/* Navigation styling */
+nav {
+  margin-top: 10px;
+}
+
+nav a {
+  color: #ddd;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: var(--font-size-base);
+}
+
+nav a:hover {
+  color: var(--color-highlight);
+}
+
+/* Main content styling */
+.container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: var(--padding-large);
+  background: #fff;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  animation: slideUp 0.8s ease-out;
+}
+
+/* Slide up animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.container h1 {
+  font-size: var(--font-size-xxl);
+  color: var(--color-header-bg);
+  margin-bottom: 15px;
+}
+
+.news-image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  margin: 15px 0;
+}
+
+.container p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Registration form styling */
+.registration-form {
+  background-color: var(--color-form-bg);
+  padding: var(--padding-large);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.registration-form h3 {
+  font-size: var(--font-size-xl);
+  color: var(--color-header-bg);
+  margin-bottom: 10px;
+}
+
+.registration-form label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+  color: var(--color-text);
+}
+
+.registration-form input[type="text"],
+.registration-form input[type="email"],
+.registration-form input[type="tel"] {
+  width: 100%;
+  padding: var(--padding-small);
+  margin-top: 5px;
+  border: 1px solid var(--color-form-border);
+  border-radius: 5px;
+  font-size: var(--font-size-base);
+}
+
+.registration-form button {
+  width: 100%;
+  padding: var(--padding-small);
+  margin-top: 15px;
+  font-size: 1.1rem;
+  background-color: var(--color-highlight);
+  color: var(--color-footer-text);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+}
+
+.registration-form button:hover {
+  background-color: var(--color-button-hover);
+}
+
+/* Footer styling */
+footer {
+  background-color: var(--color-footer-bg);
+  color: var(--color-footer-text);
+  text-align: center;
+  padding: var(--padding-small);
+  font-size: var(--font-size-large);
+  height: 80px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .container h1 {
+    font-size: 28px;
+  }
+  .logo {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  /* Show nav toggle button */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Hide nav links initially */
+  nav {
+    display: none;
+    opacity: 0;
+    animation: slideDown 0.5s ease forwards;
+  }
+
+  /* Show nav links when menu is toggled */
+  #menu-checkbox:checked + .menu-toggle + nav {
+    display: block;
+    background-color: var(--color-header-bg);
+    text-align: center;
+    padding: var(--padding-small) 0;
+    margin-top: 10px;
+  }
+
+  /* Slide-down animation */
+  @keyframes slideDown {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  #menu-checkbox:checked + .menu-toggle + nav {
+    animation: slideDown 0.5s ease forwards;
+  }
+
+  nav a {
+    display: block;
+    margin: 10px 0;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container h1 {
+    font-size: 24px;
+  }
+
+  .registration-form h3 {
+    font-size: 20px;
+  }
+
+  .registration-form button {
+    font-size: 16px;
+  }
+
+  .news-image {
+    border-radius: 5px;
+  }
+}
