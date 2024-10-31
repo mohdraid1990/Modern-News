@@ -13,34 +13,9 @@
   --padding-small: 10px;
   --border-radius: 8px;
   --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  --animation-duration: 0.4s;
+  --animation-duration: 0.6s;
   --animation-ease: ease-in-out;
 }
-
-/* Fade-in animation */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.98);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Slide-down animation for mobile menu */
-@keyframes slideDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* Reset styles */
 * {
   margin: 0;
@@ -49,7 +24,39 @@
   font-family: var(--font-main);
 }
 
-/* Apply fade-in effect on page load */
+/* Keyframes */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Apply fade-in and scale effect on page load */
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -57,7 +64,7 @@ body {
   animation: fadeIn 1s var(--animation-ease);
 }
 
-/* Header styling */
+/* Header styling with animation */
 header {
   background-color: var(--color-header-bg);
   color: var(--color-nav);
@@ -66,18 +73,21 @@ header {
   align-items: center;
   justify-content: space-around;
   position: relative;
+  animation: fadeInScale 1s var(--animation-ease);
 }
 
 .logo {
   font-size: 24px;
   font-weight: bold;
   color: var(--color-logo);
+  animation: fadeInScale 1.2s var(--animation-ease);
 }
 
-/* Navigation styling */
+/* Navigation styling with hover effect */
 nav {
   display: flex;
   gap: 15px;
+  animation: fadeIn 1.2s var(--animation-ease);
 }
 
 nav a {
@@ -122,14 +132,14 @@ nav a:hover {
     padding: var(--padding-large);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-20px) scale(0.95);
     transition: none;
   }
 
-  /* Display navigation with slide-down animation when checkbox is checked */
+  /* Display navigation with animation when checkbox is checked */
   #menu-checkbox:checked + .menu-toggle + nav {
     display: flex;
-    animation: slideDown var(--animation-duration) var(--animation-ease) forwards;
+    animation: fadeInScale var(--animation-duration) var(--animation-ease) forwards;
   }
 
   nav a {
@@ -139,7 +149,7 @@ nav a:hover {
   }
 }
 
-/* Main container styling */
+/* Main container styling with fade-in effect */
 .container {
   max-width: 1000px;
   margin: 20px auto;
@@ -147,46 +157,53 @@ nav a:hover {
   background: #fff;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
+  animation: fadeInScale 1.2s var(--animation-ease);
 }
 
-/* Content layout with image on the right */
+/* Content layout with slide-up effect */
 .content-layout {
   display: flex;
   align-items: flex-start;
   gap: 20px;
+  animation: slideUp 1.4s var(--animation-ease);
 }
 
 .container h1 {
   font-size: 24px;
   color: var(--color-header-bg);
   margin-bottom: 15px;
+  animation: fadeInScale 1.2s var(--animation-ease);
 }
 
 .news-image {
   width: 40%;
   height: auto;
   border-radius: var(--border-radius);
+  animation: slideUp 1.4s var(--animation-ease);
 }
 
 .container p {
   font-size: 1rem;
   width: 60%;
   color: #555;
+  animation: fadeInScale 1.2s var(--animation-ease);
 }
 
-/* Registration form styling */
+/* Registration form styling with slide-up effect */
 .registration-form {
   background-color: var(--color-form-bg);
   padding: var(--padding-large);
   border-radius: var(--border-radius);
   margin-top: 20px;
   box-shadow: var(--box-shadow);
+  animation: slideUp 1.5s var(--animation-ease);
 }
 
 .registration-form h3 {
   font-size: 20px;
   color: var(--color-header-bg);
   margin-bottom: 10px;
+  animation: fadeInScale 1.3s var(--animation-ease);
 }
 
 .registration-form label {
@@ -215,6 +232,7 @@ nav a:hover {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  animation: fadeInScale 1.4s var(--animation-ease);
 }
 
 .registration-form button:hover {
@@ -229,6 +247,7 @@ footer {
   padding: var(--padding-small);
   font-size: 16px;
   margin-top: 20px;
+  animation: fadeIn 1.5s var(--animation-ease);
 }
 
 /* Responsive styling */
