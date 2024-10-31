@@ -1,28 +1,47 @@
-/* Define CSS variables in root */
+/* CSS Variables */
 :root {
   --font-main: "Helvetica Neue", Arial, sans-serif;
   --color-bg: #f4f4f9;
   --color-text: #333;
   --color-header-bg: #1a1a2e;
-  --color-highlight: #e94560;
-  --color-footer-bg: #1a1a2e;
-  --color-footer-text: #fff;
+  --color-logo: #e94560;
+  --color-nav: #fff;
   --color-form-bg: #f7f7f9;
   --color-form-border: #ddd;
   --color-button-hover: #d8345f;
-  --font-size-base: 16px;
-  --font-size-small: 14px;
-  --font-size-large: 20px;
-  --font-size-xl: 24px;
-  --font-size-xxl: 32px;
-  --padding-small: 10px;
   --padding-large: 20px;
+  --padding-small: 10px;
   --border-radius: 8px;
   --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  --transition-speed: 0.3s;
+  --animation-duration: 0.4s;
+  --animation-ease: ease-in-out;
 }
 
-/* Basic Reset */
+/* Fade-in animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Slide-down animation for mobile menu */
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reset styles */
 * {
   margin: 0;
   padding: 0;
@@ -30,115 +49,128 @@
   font-family: var(--font-main);
 }
 
-/* Body styling */
+/* Apply fade-in effect on page load */
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
-  overflow-x: hidden;
-  animation: fadeIn 1s ease-out;
-}
-
-/* Page fade-in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  animation: fadeIn 1s var(--animation-ease);
 }
 
 /* Header styling */
 header {
   background-color: var(--color-header-bg);
-  color: var(--color-footer-text);
+  color: var(--color-nav);
   padding: var(--padding-large);
-  text-align: center;
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  position: relative;
 }
 
 .logo {
-  font-size: var(--font-size-xl);
+  font-size: 24px;
   font-weight: bold;
-  color: var(--color-highlight);
-}
-
-/* Toggle button styling */
-.menu-toggle {
-  display: none;
-  font-size: var(--font-size-xl);
-  position: absolute;
-       top: 8px;
-    right: 10px;
-
-  color: var(--color-footer-text);
-  cursor: pointer;
-}
-
-/* Hide the checkbox */
-#menu-checkbox {
-  display: none;
+  color: var(--color-logo);
 }
 
 /* Navigation styling */
 nav {
-  margin-top: 10px;
+  display: flex;
+  gap: 15px;
 }
 
 nav a {
-  color: #ddd;
+  color: var(--color-nav);
   text-decoration: none;
-  margin: 0 15px;
-  font-size: var(--font-size-base);
+  font-size: 16px;
+  transition: color var(--animation-duration) var(--animation-ease);
 }
 
 nav a:hover {
-  color: var(--color-highlight);
+  color: var(--color-logo);
 }
 
-/* Main content styling */
+/* Toggle button styling for mobile */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--color-nav);
+}
+
+/* Hide checkbox */
+#menu-checkbox {
+  display: none;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  /* Show menu toggle button and hide navigation by default */
+  .menu-toggle {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    right: 0px;
+    background-color: var(--color-header-bg);
+    padding: var(--padding-large);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: none;
+  }
+
+  /* Display navigation with slide-down animation when checkbox is checked */
+  #menu-checkbox:checked + .menu-toggle + nav {
+    display: flex;
+    animation: slideDown var(--animation-duration) var(--animation-ease) forwards;
+  }
+
+  nav a {
+    padding: var(--padding-small) 0;
+    font-size: 18px;
+    text-align: center;
+  }
+}
+
+/* Main container styling */
 .container {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 20px auto;
   padding: var(--padding-large);
   background: #fff;
-  box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
-  animation: slideUp 0.8s ease-out;
+  box-shadow: var(--box-shadow);
 }
 
-/* Slide up animation */
-@keyframes slideUp {
-  from {
-    transform: translateY(50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+/* Content layout with image on the right */
+.content-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
 }
 
 .container h1 {
-  font-size: var(--font-size-xxl);
+  font-size: 24px;
   color: var(--color-header-bg);
   margin-bottom: 15px;
 }
 
 .news-image {
-  width: 100%;
+  width: 40%;
   height: auto;
   border-radius: var(--border-radius);
-  margin: 15px 0;
 }
 
 .container p {
-  font-size: 1.1rem;
-  margin-bottom: 20px;
+  font-size: 1rem;
+  width: 60%;
   color: #555;
 }
 
@@ -147,11 +179,12 @@ nav a:hover {
   background-color: var(--color-form-bg);
   padding: var(--padding-large);
   border-radius: var(--border-radius);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  box-shadow: var(--box-shadow);
 }
 
 .registration-form h3 {
-  font-size: var(--font-size-xl);
+  font-size: 20px;
   color: var(--color-header-bg);
   margin-bottom: 10px;
 }
@@ -163,28 +196,25 @@ nav a:hover {
   color: var(--color-text);
 }
 
-.registration-form input[type="text"],
-.registration-form input[type="email"],
-.registration-form input[type="tel"] {
+.registration-form input {
   width: 100%;
   padding: var(--padding-small);
   margin-top: 5px;
   border: 1px solid var(--color-form-border);
   border-radius: 5px;
-  font-size: var(--font-size-base);
+  font-size: 16px;
 }
 
 .registration-form button {
   width: 100%;
   padding: var(--padding-small);
   margin-top: 15px;
-  font-size: 1.1rem;
-  background-color: var(--color-highlight);
-  color: var(--color-footer-text);
+  font-size: 18px;
+  background-color: var(--color-logo);
+  color: var(--color-nav);
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color var(--transition-speed);
 }
 
 .registration-form button:hover {
@@ -193,88 +223,26 @@ nav a:hover {
 
 /* Footer styling */
 footer {
-  background-color: var(--color-footer-bg);
-  color: var(--color-footer-text);
+  background-color: var(--color-header-bg);
+  color: var(--color-nav);
   text-align: center;
   padding: var(--padding-small);
-  font-size: var(--font-size-large);
-  height: 80px;
+  font-size: 16px;
+  margin-top: 20px;
 }
 
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-  .container h1 {
-    font-size: 28px;
-  }
-  .logo {
-    font-size: 20px;
-  }
-}
-
+/* Responsive styling */
 @media (max-width: 768px) {
-  header {
+  .content-layout {
     flex-direction: column;
-    padding: 10px;
-  }
-  
-  /* Show nav toggle button */
-  .menu-toggle {
-    display: block;
-  }
-
-  /* Hide nav links initially */
-  nav {
-    display: none;
-    opacity: 0;
-    animation: slideDown 0.5s ease forwards;
-  }
-
-  /* Show nav links when menu is toggled */
-  #menu-checkbox:checked + .menu-toggle + nav {
-    display: block;
-    background-color: var(--color-header-bg);
-    text-align: center;
-    padding: var(--padding-small) 0;
-    margin-top: 10px;
-  }
-
-  /* Slide-down animation */
-  @keyframes slideDown {
-    from {
-      transform: translateY(-20px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  #menu-checkbox:checked + .menu-toggle + nav {
-    animation: slideDown 0.5s ease forwards;
-  }
-
-  nav a {
-    display: block;
-    margin: 10px 0;
-    font-size: 18px;
-  }
-}
-
-@media (max-width: 480px) {
-  .container h1 {
-    font-size: 24px;
-  }
-
-  .registration-form h3 {
-    font-size: 20px;
-  }
-
-  .registration-form button {
-    font-size: 16px;
+    align-items: center;
   }
 
   .news-image {
-    border-radius: 5px;
+    width: 100%;
+  }
+
+  .container p {
+    width: 100%;
   }
 }
