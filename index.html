@@ -1,60 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modern News Page</title>
-    <link rel="stylesheet" href="style.css">
-  <body>
-    <!-- Header with logo, navigation, and toggle button -->
-    <header>
-      <div class="logo">Современные новости</div>
-      <input type="checkbox" id="menu-checkbox" />
-      <label for="menu-checkbox" class="menu-toggle">&#9776;</label>
-      <nav>
-        <a href="#">Главная</a>
-        <a href="#">Новости</a>
-        <a href="#">Политика</a>
-        <a href="#">Экономика</a>
-        <a href="#">Спорт</a>
-      </nav>
-    </header>
-  
-    <!-- Main content container -->
-    <div class="container">
-      <h1>Экономический рост замедлился на 3,2% во втором квартале 2024 года</h1>
-      <img src="news-2444778_1280-1024x618.jpg" alt="Изображение новости" class="news-image" />
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Современные новости</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Responsive Header with logo and navigation -->
+  <header>
+    <div class="logo">Современные новости</div>
+    <input type="checkbox" id="menu-checkbox" />
+    <label for="menu-checkbox" class="menu-toggle">&#9776;</label>
+    <nav>
+      <a href="#">Главная</a>
+      <a href="#">Новости</a>
+      <a href="#">Политика</a>
+      <a href="#">Экономика</a>
+      <a href="#">Спорт</a>
+    </nav>
+  </header>
+
+  <!-- Main content container with image on the right -->
+  <div class="container">
+    <h1>Экономический рост замедлился на 3,2% во втором квартале 2024 года</h1>
+    <div class="content-layout">
       <p>
         По последним данным, экономический рост в стране замедлился на 3,2% по сравнению с предыдущим кварталом.
         Эксперты связывают это с глобальными экономическими вызовами и внутренними трудностями.
-        Несмотря на это, правительство планирует внедрение мер, направленных на стимулирование экономики и поддержку малого и
-        среднего бизнеса.
+        Несмотря на это, правительство планирует внедрение мер, направленных на стимулирование экономики и поддержку
+        малого и среднего бизнеса.
       </p>
-  
-      <!-- Registration form -->
-      <div class="registration-form">
-        <h3>Подпишитесь на нашу рассылку</h3>
-        <form action="#">
-          <label for="first-name">Имя</label>
-          <input type="text" id="first-name" name="first-name" required />
-  
-          <label for="last-name">Фамилия</label>
-          <input type="text" id="last-name" name="last-name" required />
-  
-          <label for="email">Электронная почта</label>
-          <input type="email" id="email" name="email" required />
-  
-          <label for="phone">Телефон</label>
-          <input type="tel" id="phone" name="phone" required />
-  
-          <button type="submit">Подписаться</button>
-        </form>
-      </div>
+      <img src="news-2444778_1280-1024x618.jpg" alt="Изображение новости" class="news-image" />
     </div>
-  
-    <!-- Footer -->
-    <footer>
-      <p>&copy; 2024 Современные новости. Все права защищены.</p>
-    </footer>
-  </body>
+
+    <!-- Registration form -->
+    <div class="registration-form">
+      <h3>Подпишитесь на нашу рассылку</h3>
+      <form action="#">
+        <label for="first-name">Имя</label>
+        <input type="text" id="first-name" name="first-name" required />
+
+        <label for="last-name">Фамилия</label>
+        <input type="text" id="last-name" name="last-name" required />
+
+        <label for="email">Электронная почта</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="phone">Телефон</label>
+        <input type="tel" id="phone" name="phone" required />
+
+        <button type="submit">Подписаться</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Современные новости. Все права защищены.</p>
+  </footer>
+
+</body>
+
 </html>
